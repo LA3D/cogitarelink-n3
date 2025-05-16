@@ -1,4 +1,4 @@
-# n3-eye
+# CogitareLink N3-EYE
 Demo project that integrates the EYE (eyereasoner) WASM reasoner into CogitareLink’s `reason_over` pipeline,
 enabling N3 rule execution alongside SHACL and SPARQL.
 

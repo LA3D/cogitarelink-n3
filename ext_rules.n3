@@ -1,0 +1,2 @@
+@prefix : <http://ex/> . { ?p :contains :CauseHarm } => { ?p :violates :NoHarm } .
+{ ?p :violates :NoHarm } => { ?p :obliges :AlertStaff } .

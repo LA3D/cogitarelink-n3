@@ -1,0 +1,14 @@
+[project]
+name = "n3-eye"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pyld>=2.0.4",
+    "pyshacl>=0.30.1",
+    "cogitarelink @ git+https://github.com/LA3D/cogitarelink.git",
+    "cosette>=0.0.4",
+    "python-dotenv>=1.1.0",
+    "toolslm>=0.2.0",
+]

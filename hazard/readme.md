@@ -1,0 +1,2 @@
+Hazardous Situation Ontology based on:
+Michelle Cheatham, Holly Ferguson, Charles Vardeman II, and Cogan Shimizu. "A Modification to the Hazardous Situation ODP to Support Risk Assessment and Mitigation." Workshop on Ontology and Semantic Web Patterns co-located with ISWC2016.

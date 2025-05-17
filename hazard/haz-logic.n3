@@ -1,0 +1,28 @@
+@prefix ex:   <https://example.org/haz#> .
+@prefix dl:   <https://purl.org/dl#> .        # simple deontic namespace
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+######## 5.1  Prohibition – HIGH risk forbidden ###################
+{ ?S ex:riskLevel "HIGH" }
+    => { ?S dl:violates ex:NoHighRisk } .
+
+######## 5.2  CTD obligation – apply mitigation ###################
+{ ?S dl:violates ex:NoHighRisk .
+  ?S ex:participantIn ?EV . }
+    => { ?EV dl:obliges ex:ApplyMitigation } .
+
+######## 5.3  Mitigation fulfilment reduces exposure ##############
+#  (Effective amount < Original amount)
+{ ?MIT  a ex:Mitigation ;
+        ex:mitigatesFrom ?EXP ;
+        ex:mitigatesTo   ?EFF .
+  ?EFF ex:hasAmount ?AMT_EFF .
+  ?EXP ex:hasAmount ?AMT_ORIG .
+  ?AMT_EFF math:lessThan ?AMT_ORIG . }
+    => { ?EXP ex:isMitigated "true"^^xsd:boolean } .
+
+######## 5.4  Type‑disjointness escalates risk ####################
+{ ?X dl:violates ex:TypeDisjointness .
+  ?S ex:hasParticipant ?X . }
+    => { ?S ex:riskLevel "HIGH" } .

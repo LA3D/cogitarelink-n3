@@ -1,0 +1,30 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix ex:  <https://example.org/haz#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#############################################
+# NodeShape: Exposure exceeds susceptibility
+#############################################
+ex:RiskEvalShape
+    a sh:NodeShape ;
+    sh:targetClass     ex:HazardousSituation ;
+    sh:rule [                       # SPARQLRule emits riskLevel & adds violation
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX ex: <https://example.org/haz#>
+            CONSTRUCT {
+              ?situation ex:riskLevel \"HIGH\" .
+            }
+            WHERE {
+              ?situation ex:hasParticipant ?obj .
+              ?obj       ex:exposedTo      ?exposure .
+              ?exposure  ex:hasAmount      ?amtE .
+              ?obj       ex:hasSusceptibility ?sus .
+              ?sus       ex:toExposure     ?exposure ;
+                         ex:hasAmount      ?amtS .
+              FILTER ( ?amtE > ?amtS )
+            }
+        """ ;
+    ] ;
+    sh:message  "Exposure amount exceeds susceptibility ⇒ HIGH risk" ;
+    sh:severity sh:Violation .

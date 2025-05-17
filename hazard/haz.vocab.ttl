@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:   <https://example.org/haz#> .
+
+##############  Classes  ##############
+ex:Amount            a rdfs:Class ; rdfs:label "Amount" .
+ex:Cause             a rdfs:Class ; rdfs:label "Cause" .
+ex:Consequence       a rdfs:Class ; rdfs:label "Consequence" .
+ex:Event             a rdfs:Class ; rdfs:label "Event" .
+ex:Exposure          a rdfs:Class ; rdfs:label "Exposure" .
+ex:Hazard            a rdfs:Class ; rdfs:label "Hazard" .
+ex:HazardousEvent    a rdfs:Class ; rdfs:label "HazardousEvent" .
+ex:HazardousSituation a rdfs:Class ; rdfs:label "HazardousSituation" .
+ex:Mitigation        a rdfs:Class ; rdfs:label "Mitigation" .
+ex:Object            a rdfs:Class ; rdfs:label "Object" .
+ex:Susceptibility    a rdfs:Class ; rdfs:label "Susceptibility" .
+ex:EffectiveExposure a rdfs:Class ; rdfs:subClassOf ex:Exposure ;
+                    rdfs:label "EffectiveExposure" .
+
+##############  Properties  ##############
+ex:hasParticipant    a rdfs:Property ; rdfs:domain ex:HazardousSituation .
+ex:participantIn     a rdfs:Property ; rdfs:range  ex:HazardousSituation .
+ex:exposedTo         a rdfs:Property ; rdfs:domain ex:Object ; rdfs:range ex:Exposure .
+ex:hasSusceptibility a rdfs:Property ; rdfs:domain ex:Object ; rdfs:range ex:Susceptibility .
+ex:toExposure        a rdfs:Property ; rdfs:domain ex:Susceptibility ; rdfs:range ex:Exposure .
+ex:hasAmount         a rdfs:Property .
+ex:mitigatedBy       a rdfs:Property ; rdfs:domain ex:Exposure ; rdfs:range ex:Mitigation .
+ex:mitigatesFrom     a rdfs:Property ; rdfs:domain ex:Mitigation ; rdfs:range ex:Exposure .
+ex:mitigatesTo       a rdfs:Property ; rdfs:domain ex:Mitigation ; rdfs:range ex:EffectiveExposure .
+ex:riskLevel         a rdfs:Property .
+
+# affordance links
+ex:hasShape          a rdfs:Property .
+ex:hasN3Rule         a rdfs:Property .

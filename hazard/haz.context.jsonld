@@ -1,0 +1,35 @@
+{
+  "@context": {
+    "@version": 1.1,
+
+    "rdf":  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd":  "http://www.w3.org/2001/XMLSchema#",
+
+    "ex":   "https://example.org/haz#",
+    "prov": "http://www.w3.org/ns/prov#",
+
+    "HazardousSituation": "ex:HazardousSituation",
+    "HazardousEvent":    "ex:HazardousEvent",
+    "Exposure":          "ex:Exposure",
+    "Mitigation":        "ex:Mitigation",
+    "Object":            "ex:Object",
+
+    "hasParticipant":    { "@id": "ex:hasParticipant",    "@type": "@id" },
+    "participantIn":     { "@id": "ex:participantIn",     "@type": "@id" },
+    "exposedTo":         { "@id": "ex:exposedTo",         "@type": "@id" },
+    "hasAmount":         { "@id": "ex:hasAmount",         "@type": "xsd:double" },
+    "hasSusceptibility": { "@id": "ex:hasSusceptibility", "@type": "@id" },
+    "toExposure":        { "@id": "ex:toExposure",        "@type": "@id" },
+    "mitigatedBy":       { "@id": "ex:mitigatedBy",       "@type": "@id" },
+    "mitigatesFrom":     { "@id": "ex:mitigatesFrom",     "@type": "@id" },
+    "mitigatesTo":       { "@id": "ex:mitigatesTo",       "@type": "@id" },
+    "riskLevel":         { "@id": "ex:riskLevel" },
+
+    "hasShape":          { "@id": "ex:hasShape",          "@type": "@id" },
+    "hasN3Rule":         { "@id": "ex:hasN3Rule",         "@type": "@id" },
+
+    "violates":          "dl:violates",
+    "obliges":           "dl:obliges"
+  }
+}

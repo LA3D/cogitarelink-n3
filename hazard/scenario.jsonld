@@ -1,0 +1,32 @@
+{
+  "@context": "./haz.context.jsonld",
+  "@id": "ex:scenario_1",
+  "@type": "HazardousSituation",
+
+  "hasShape":  "ex:RiskEvalShape",
+  "hasN3Rule": "ex:DeonticHazardRules",
+
+  "hasParticipant": {
+    "@id": "ex:Tank7",
+    "@type": "Object",
+
+    "exposedTo": {
+      "@id": "ex:Exposure_Tank7",
+      "@type": "Exposure",
+      "hasAmount": 150.0
+    },
+
+    "hasSusceptibility": {
+      "@id": "ex:Suscept_Tank7",
+      "@type": "Susceptibility",
+      "toExposure": { "@id": "ex:Exposure_Tank7" },
+      "hasAmount": 120.0
+    }
+  },
+
+  "participantIn": {
+    "@id": "ex:event_1",
+    "@type": "HazardousEvent",
+    "description": "Robot will open Tank‑7 lid and inspect filters"
+  }
+}

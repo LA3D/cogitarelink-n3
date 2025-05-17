@@ -1,0 +1,25 @@
+@prefix ex: <https://example.org/haz#> .
+@prefix dl: <https://purl.org/dl#> .
+
+######## 4.1  Disjointness ########################################
+# Each rule detects an individual that wrongly belongs to two disjoint classes
+# For brevity we include just a few critical pairs; add more as needed.
+
+{ ?x a ex:Amount . ?x a ex:Hazard . }
+  => { ?x dl:violates ex:TypeDisjointness } .
+{ ?x a ex:Amount . ?x a ex:Exposure . }
+  => { ?x dl:violates ex:TypeDisjointness } .
+{ ?x a ex:Hazard . ?x a ex:Consequence . }
+  => { ?x dl:violates ex:TypeDisjointness } .
+
+######## 4.2  Existential restriction #############################
+# Consequence ⊑ ∃causallyFollows.HazardousEvent (informational)
+{ ?c a ex:Consequence . }
+  => { ?c ex:requiresContext ex:HazardousEvent } .
+
+######## 4.3  Property‑chain #######################################
+# mitigatedBy ◦ mitigatesFrom ◦ toHazard ⇒ toHazard
+{ ?exp1 ex:mitigatedBy ?mit .
+  ?mit  ex:mitigatesFrom ?exp2 .
+  ?exp2 ex:toHazard ?haz . }
+ => { ?exp1 ex:toHazard ?haz } .
